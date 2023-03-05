@@ -1,0 +1,127 @@
+﻿<div class="row">
+	<div class="col-sm" style="padding: 0 5px 0 0;">
+		<select class="form-select" aria-label="Default select example" id="sourceType">
+			<option selected>Выберите тип источника</option>
+			<option value="wind">Ветер</option>
+			<option value="sun">Солнце</option>
+			<option value="hybrid">Гибрид</option>
+		</select>
+	</div>
+	<div class="col-sm" style="padding: 0 0 0 5px;">
+		<button type="button" class="btn btn-info" id="showHideCalcBlockButton" style="width: 100%">
+			Показать калькулятор
+		</button>
+	</div>
+</div>
+
+<div id="graph" style="margin-top: 15px;"></div>
+
+<div id="calculator" style="display: none; padding-top: 20px;">
+	<p class="text-center h3">Калькулятор для рассчета энергий</p>
+	<div id="form-container">
+		<div class="row" id="main-inputs-0" style="margin-left: 0; margin-right: 0;">
+			<div class="col-md-3">
+				<div class="form-group">
+					<input class="form-control" id="device" placeholder="Имя компонента" name="device">
+					<i class="fa fa-television" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="number" id="quantity" min="0" class="form-control" value="" placeholder="Количество" name="quantity" data-bind="value: quantity">
+					<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="number" min="0" class="form-control" value="0" placeholder="Мощность (Ват)" name="capacity" data-bind="value: capacity">
+					<i class="fa fa-bolt" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<input type="number" min="0" class="form-control" value="0" placeholder="Ежедневные часы работы" name="daily-operating-hours" data-bind="value: dailyOperatingHours">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="col-md-1 resultCol">
+				<span data-bind="text: rowResult" class="resultColVal"></span> <span class="unit">ВАТ</span>
+			</div>
+			<div class="col-md-1 resultCol text-center">
+				<i class="fa fa-times" aria-hidden="true" data-bind="click: removeRow"></i>
+			</div>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-md-12">
+			<button class="btn btn-primary btn-lg addNewButton" type="button" id="addNewRowButton">
+				<i class="fa fa-plus-circle" aria-hidden="true"></i>
+				Добавить компонент
+			</button>
+		</div>
+	</div>
+	<div id="result">
+		<div class="row">
+			<div class="col-md-10 text-right finalResultText">
+				<h4>Общее потребление </h4>
+				</span>
+			</div>
+			<div class="col-md-2 finaleResultCol text-center">
+				<span class="finalResult text-info" data-bind="text: totalConsumption"></span> <span class="unit">ВАТ</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 text-right finalResultText">
+				<h4>Стоимость </h4>
+				</span>
+			</div>
+			<div class="col-md-2 finaleResultCol text-center">
+				<span class="finalResult text-info" data-bind="text: totalConsumptionWithLossOfEfficiency" id="totalMoney"></span> <span class="unit">KZT</span>
+			</div>
+		</div>
+	</div>
+
+	<p class="text-center h3" style="margin: 20px 0">Данные об источнике</p>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col">
+			Стоимость источника
+		</div>
+		<div class="col">
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="basic-addon1">Ват</span>
+				<input type="number" class="form-control" placeholder="Стоимость" id="sourcePrice" aria-describedby="basic-addon1">
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col">
+			Средний объем производство энергии
+		</div>
+		<div class="col">
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="basic-addon1">KZT</span>
+				<input type="number" class="form-control" placeholder="Объем" aria-describedby="basic-addon1">
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col">
+			<button type="button" class="btn btn-primary" id="calculateButton">Рассчитать</button>
+		</div>
+		<div class="col">
+			
+		</div>
+	</div>
+
+	<div id="sourceResult" style="display: none;">
+		<p class="text-center h3">Результат</p>
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="col">
+				Окупиться через
+			</div>
+			<div class="col">
+				<input type="text" disabled class="form-control" id="resultTextBox" aria-describedby="basic-addon1">
+			</div>
+		</div>
+	</div>
+</div>
